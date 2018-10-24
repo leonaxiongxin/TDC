@@ -1,0 +1,13 @@
+.docx
+.xlsx
+.txt
+/csvdata/*
+/xmldata/*
+/cnkidata/*
+/triple/*
+/DTM/*
+/TTM/*
+/TDC/*
+/figure/*
+/未抽样平均数据/*
+
