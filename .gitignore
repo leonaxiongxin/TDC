@@ -1,13 +1,10 @@
-.docx
-.xlsx
-.txt
-/csvdata/*
-/xmldata/*
-/cnkidata/*
-/triple/*
-/DTM/*
-/TTM/*
-/TDC/*
+*.docx
+*.xlsx
+*.txt
+/src/.idea/*
+/src/__pycache__/*
+/data/*
+/log/*
 /figure/*
 /未抽样平均数据/*
 
