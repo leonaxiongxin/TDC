@@ -126,6 +126,7 @@ def txt2triple():
         rows = records.shape[0]
 
         # with sampling, 360 records
+        # optional operation
         if count > length:
             sampling_data = []
             sampling_labels = np.arange(2013, 2018)
@@ -198,6 +199,7 @@ def txt2triple():
 if __name__ == '__main__':
     # xml2txt()
     pynlpir.open()
+    # AddUserWord 加入用户词典的词不可分割
     pynlpir.nlpir.AddUserWord(c_char_p('云计算'.encode('utf-8')))
     pynlpir.nlpir.AddUserWord(c_char_p('微博'.encode('utf-8')))
     txt2triple()

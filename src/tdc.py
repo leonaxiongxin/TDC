@@ -81,6 +81,7 @@ def main(dtm_list, output_file):
         np.save(f, density_avg)
 
     with open("../data/tdc{}.npy".format(output_file), 'wb+') as f:
+        print(tdc_avg)
         np.save(f, tdc_avg)
 
 
@@ -105,6 +106,6 @@ if __name__ == '__main__':
     else:
         raise Exception('No matching files group by py')
 
-    # main(dtm_by_journal_list, output_file="_by_journal")
+    main(dtm_by_journal_list, output_file="_by_journal")
 
     log_file.close()

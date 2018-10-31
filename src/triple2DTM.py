@@ -19,6 +19,7 @@ def getJournals():
 def convert(records, documents, file_name):
     """
     :param records: two-dimensional numpy array
+    :param documents: one-dimensional numpy array
     :param file_name: string
     :return: array with two elements
     """
@@ -59,7 +60,7 @@ def convert(records, documents, file_name):
                 elif term not in term_list:
                     term_list.append(term)
                     freq_py_list.append([0]*len(py_options))
-                    freq_py_list[0][py_index] = 1
+                    freq_py_list[term_size][py_index] = 1
                     # DTM = np.c_[DTM, np.zeros([D_size,1])]
                     # np.concatenate with axis is faster
                     dtm = np.concatenate((dtm, np.zeros((documents_size,1))), axis=1)
@@ -82,7 +83,7 @@ def convert(records, documents, file_name):
                 bhs_index = [x for x in range(len(term_vector)) if term_vector[x] == 1]
                 for index in bhs_index:
                     bhs.append(documents[index])
-                freq = [str(x) for x in freq_py_list]
+                freq = [str(x) for x in freq_py_list[j]]
                 term_set_list.append([term_list[j], ','.join(freq), ','.join(bhs)])
             term_set_array = np.array(term_set_list)
             # print("Shape of term array for {} is {}".format(file_name, term_set_array.shape))
@@ -97,7 +98,7 @@ def group_by_journal():
     journal_list = getJournals()
 
     for journal in journal_list:
-        if journal == 'TSG' or journal == 'ZGTSGXB':
+        if 1 > 0:
             start = time.time()
             print("Generating {} DTM ... ".format(journal), flush=False)
 

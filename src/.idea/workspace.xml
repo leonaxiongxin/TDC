@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bd51685-d83b-4939-a922-640cb4b02689" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sampling.py" beforeDir="false" afterPath="$PROJECT_DIR$/sampling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw.m" beforeDir="false" afterPath="$PROJECT_DIR$/draw.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/figure.py" beforeDir="false" afterPath="$PROJECT_DIR$/figure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdc.py" beforeDir="false" afterPath="$PROJECT_DIR$/tdc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/triple2DTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/triple2DTM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xml2triple.py" beforeDir="false" afterPath="$PROJECT_DIR$/xml2triple.py" afterDir="false" />
@@ -20,19 +22,19 @@
     <session id="-415060687">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="3" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -48,12 +50,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="101" />
-          <entry key="py" value="10348" />
+          <entry key="py" value="11048" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="10449" />
+          <entry key="Python" value="11149" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -61,31 +63,33 @@
     <session id="-461199096">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="16" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.23" value="2" />
+          <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.3" value="4" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="17" />
           <entry key="gitignore" value="174" />
-          <entry key="py" value="18609" />
+          <entry key="py" value="19793" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="191" />
-          <entry key="Python" value="18609" />
+          <entry key="Python" value="19793" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -108,7 +112,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xml2csv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2043">
+            <state relative-caret-position="2208">
               <caret line="97" column="34" selection-start-line="97" selection-start-column="31" selection-end-line="97" selection-end-column="34" />
               <folding>
                 <element signature="e#161#174#0" expanded="true" />
@@ -117,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xml2triple.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="172" selection-start-line="172" selection-end-line="172" />
+            <state relative-caret-position="199">
+              <caret line="197" lean-forward="true" selection-start-line="197" selection-end-line="197" />
             </state>
           </provider>
         </entry>
@@ -129,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/txt2list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1058">
-              <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+            <state relative-caret-position="-115">
+              <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -138,21 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tdc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
-              <folding>
-                <element signature="e#93#104#0" expanded="true" />
-                <marker date="1540557650383" expanded="true" signature="2735:3054" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="437">
+              <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -160,8 +151,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/figure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="713">
+              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -172,10 +163,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/triple2DTM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="132" column="53" lean-forward="true" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="53" />
+            <state relative-caret-position="391">
+              <caret line="146" column="39" lean-forward="true" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="39" />
               <folding>
-                <marker date="1540556697107" expanded="true" signature="442:3293" ph="..." />
+                <element signature="e#56#67#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -192,9 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>c_char_p</find>
-      <find>nlpir</find>
-      <find>&quot;IS-&quot; +</find>
       <find>journal_name</find>
       <find>\t</find>
       <find>txt2list</find>
@@ -212,16 +200,19 @@
       <find>np</find>
       <find>np.</find>
       <find>re.split</find>
-      <find>output_file</find>
       <find>raise</find>
       <find>set</find>
       <find>w+</find>
-      <find>wb+</find>
       <find>term_words</find>
       <find>flog</find>
       <find>dtm_merge</find>
       <find>log_file</find>
       <find>group_by_journal</find>
+      <find>group_by_py</find>
+      <find>convert</find>
+      <find>wb+</find>
+      <find>tdc_avg</find>
+      <find>output_file</find>
     </findStrings>
     <replaceStrings>
       <replace>file_output</replace>
@@ -239,22 +230,22 @@
         <option value="$PROJECT_DIR$/triple2TDM.py" />
         <option value="$PROJECT_DIR$/TDC.py" />
         <option value="$PROJECT_DIR$/DTM2TTM.py" />
-        <option value="$PROJECT_DIR$/figure.py" />
         <option value="$PROJECT_DIR$/txt2list.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/sampling.py" />
-        <option value="$PROJECT_DIR$/xml2triple.py" />
-        <option value="$PROJECT_DIR$/triple2DTM.py" />
-        <option value="$PROJECT_DIR$/tdc.py" />
         <option value="$PROJECT_DIR$/../.gitignore" />
+        <option value="$PROJECT_DIR$/triple2DTM.py" />
+        <option value="$PROJECT_DIR$/figure.py" />
+        <option value="$PROJECT_DIR$/tdc.py" />
+        <option value="$PROJECT_DIR$/xml2triple.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="698" />
-    <option name="y" value="54" />
-    <option name="width" value="1455" />
-    <option name="height" value="991" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="136" />
+    <option name="y" value="129" />
+    <option name="width" value="1632" />
+    <option name="height" value="993" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -262,6 +253,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,7 +265,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,7 +283,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tdc">
+  <component name="RunManager" selected="Python.figure">
     <configuration name="DTM2TTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="src" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -407,10 +398,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.figure" />
         <item itemvalue="Python.tdc" />
         <item itemvalue="Python.triple2DTM" />
         <item itemvalue="Python.xml2triple" />
-        <item itemvalue="Python.figure" />
         <item itemvalue="Python.DTM2TTM" />
       </list>
     </recent_temporary>
@@ -419,19 +410,19 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="698" y="54" width="1455" height="991" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24347213" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17860906" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.49830508" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32994923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32924107" />
+      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32842106" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3293919" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -466,26 +457,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/txt2list.py">
+    <entry file="file://$PROJECT_DIR$/../.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/figure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="207">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xml2csv.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2043">
+        <state relative-caret-position="2208">
           <caret line="97" column="34" selection-start-line="97" selection-start-column="31" selection-end-line="97" selection-end-column="34" />
           <folding>
             <element signature="e#161#174#0" expanded="true" />
@@ -493,38 +474,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xml2triple.py">
+    <entry file="file://$PROJECT_DIR$/figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
+        <state relative-caret-position="713">
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/triple2DTM.py">
+    <entry file="file://$PROJECT_DIR$/txt2list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="132" column="53" lean-forward="true" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="53" />
-          <folding>
-            <marker date="1540556697107" expanded="true" signature="442:3293" ph="..." />
-          </folding>
+        <state relative-caret-position="-115">
+          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tdc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+        <state relative-caret-position="437">
+          <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/triple2DTM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="146" column="39" lean-forward="true" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="39" />
           <folding>
-            <element signature="e#93#104#0" expanded="true" />
-            <marker date="1540557650383" expanded="true" signature="2735:3054" ph="..." />
+            <element signature="e#56#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../.gitignore">
+    <entry file="file://$PROJECT_DIR$/xml2triple.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="199">
+          <caret line="197" lean-forward="true" selection-start-line="197" selection-end-line="197" />
         </state>
       </provider>
     </entry>

@@ -1,4 +1,4 @@
-TDC = readNPY('..\TDC\IS-QBXB-13-17.npy');
+TDC = readNPY('..\data\TDC\QBXB.npy');
 [n,~]=size(TDC);
 X=zeros(n,1);
 for i=1:n
