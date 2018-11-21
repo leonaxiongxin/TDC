@@ -6,5 +6,6 @@
 /data/*
 /log/*
 /figure/*
-/未抽样平均数据/*
-
+/异常点pdist/*
+/analysis/*
+/停用词/*

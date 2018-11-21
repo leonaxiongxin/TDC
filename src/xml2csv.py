@@ -62,7 +62,6 @@ class xml2csv:
         started = False
         n = 0
 
-
         # iterate through the xml
         for event, elem in self.context:
             # if elem is an unignored child node of the record tag, it should be written to buffer
@@ -71,8 +70,8 @@ class xml2csv:
             should_tag = not tagged and should_write and not noheader
 
             if event == 'start':
-                if elem.tag==tag:
-                    processed_fields=[]
+                if elem.tag == tag:
+                    processed_fields = []
                 if elem.tag == tag and not started:
                     started = True
                 elif should_tag:

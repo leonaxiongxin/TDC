@@ -11,17 +11,17 @@ import numpy as np
 
 
 def getJournals():
-    with open('../data/journals.txt', encoding='utf-8') as f:
+    with open('../data/journals_{}.txt'.format(FIELD), encoding='utf-8') as f:
         line = f.readline()
         return line.split(',')
 
 
 def convert(records, documents, file_name):
     """
-    :param records: two-dimensional numpy array
-    :param documents: one-dimensional numpy array
-    :param file_name: string
-    :return: array with two elements
+    @param records: two-dimensional numpy array
+    @param documents: one-dimensional numpy array
+    @param file_name: string
+    @return: array with two elements
     """
     records_size = len(records)
     documents_size = len(documents)
@@ -51,7 +51,7 @@ def convert(records, documents, file_name):
                         index = term_list.index(term)
                         freq_py_list[index][py_index] += 1
                         # consider TF
-                        # DTM[d][index] += 1
+                        # dtm[d][index] += 1
                         # without TF
                         dtm[d][index] = 1
                         continue
@@ -63,7 +63,7 @@ def convert(records, documents, file_name):
                     freq_py_list[term_size][py_index] = 1
                     # DTM = np.c_[DTM, np.zeros([D_size,1])]
                     # np.concatenate with axis is faster
-                    dtm = np.concatenate((dtm, np.zeros((documents_size,1))), axis=1)
+                    dtm = np.concatenate((dtm, np.zeros((documents_size, 1))), axis=1)
                     dtm[d][term_size] = 1
                     continue
             else:
@@ -79,12 +79,15 @@ def convert(records, documents, file_name):
         if term_size == freq_size:
             for j in range(term_size):
                 term_vector = dtm[:, j]
-                bhs = []
-                bhs_index = [x for x in range(len(term_vector)) if term_vector[x] == 1]
-                for index in bhs_index:
-                    bhs.append(documents[index])
+                # bhs = []
+                # bhs_index = [x for x in range(len(term_vector)) if term_vector[x] == 1]
+                # for index in bhs_index:
+                #     bhs.append(documents[index])
+                bhs = term_vector[term_vector>0]
+                df = len(bhs)
+                tf = sum(freq_py_list[j])
                 freq = [str(x) for x in freq_py_list[j]]
-                term_set_list.append([term_list[j], ','.join(freq), ','.join(bhs)])
+                term_set_list.append([term_list[j], df, tf, ','.join(freq)])
             term_set_array = np.array(term_set_list)
             # print("Shape of term array for {} is {}".format(file_name, term_set_array.shape))
             np.save(term_file, term_set_array)
@@ -96,13 +99,16 @@ def convert(records, documents, file_name):
 
 def group_by_journal():
     journal_list = getJournals()
+    length = len(journal_list)
 
-    for journal in journal_list:
-        if 1 > 0:
+    for count in range(length):
+        journal = journal_list[count]
+        # conditional
+        if count < length:
             start = time.time()
             print("Generating {} DTM ... ".format(journal), flush=False)
 
-            triple_files = glob.glob('../data/triple/IS-{}-*.txt'.format(journal))
+            triple_files = glob.glob('../data/triple/{}-*.txt'.format(journal))
             print(len(triple_files))
             if len(triple_files) == 0:
                 raise Exception("No matching files for {}".format(journal))
@@ -131,13 +137,14 @@ def group_by_journal():
 
 
 def group_by_py():
-    triple_list = glob.glob('../data/triple/IS*.txt')
+    triple_list = glob.glob('../data/triple/{}*.txt'.format(FIELD))
     length = len(triple_list)
 
     for count in range(length):
         if count < length:
             input_file = triple_list[count]
-            file_name = re.search('triple(.+?).txt', input_file).group(1)[1:]
+            journal_name = re.search('{}-(.+?).txt'.format(FIELD), input_file).group(1)
+            file_name = '{}-{}'.format(FIELD, journal_name)
             # py = re.split(r'[-]', file_name)[-1]
 
             start = time.time()
@@ -162,13 +169,12 @@ def group_by_py():
 
 
 if __name__ == '__main__':
-    log_file = open('../log/DTM.txt', 'a+', encoding='utf-8')
+    # FIELD = ['IS','CS','PHY']
+    FIELD = 'CS'
+    log_file = open('../log/{}-DTM-log.txt'.format(FIELD), 'a+', encoding='utf-8')
     log_file.write("File_name\tDTM_shape\tDuration\n")
+
     # group_by_py()
     group_by_journal()
+
     log_file.close()
-
-
-
-
-

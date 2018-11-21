@@ -19,18 +19,18 @@ def xml2txt():
     start = time.time()
     print("Generating csv ... ", flush=True)
 
-    # for IS journal
-    journal_list = glob.glob("../data/xml/IS*.xml_DR.xml")
+    journal_list = glob.glob("../data/xml/{}*.xml_DR.xml".format(FIELD))
+
     length = len(journal_list)
 
     tag = "Bibliography"
     ignore_list = ['DT', 'AD', 'TIss', 'SO', 'IS', 'ABss', 'SP', 'EP', 'LA', 'AUs', 'AUf']
 
     for count in range(length):
-        if count == 1:
+        if count < length:
             input_file = journal_list[count]
-            journal_name = re.search('xml(.+?).xml_DR.xml', input_file).group(1)[1:]
-            output_file = "../data/csv/{}.csv".format(journal_name)
+            journal_name = re.search('{}-(.+?).xml_DR.xml'.format(FIELD), input_file).group(1)
+            output_file = "../data/csv/{}-{}.csv".format(FIELD, journal_name)
             print(input_file, output_file, "\n")
             file = xml2csv.xml2csv(input_file, output_file)
             file.convert(tag, ignore_list, "\t")
@@ -40,75 +40,50 @@ def xml2txt():
     print("finished in {:.2f} sec.".format(time.time() - start), flush=True)
 
 
-def kws2userdict():
-    start = time.time()
-    print("Generating user dict ... ", flush=True)
-
-    csv_list = glob.glob("../data/csv/*.csv")
-
-    fdict = open("../IS-userdict.txt", "w+", encoding="utf-8")
-
-    userdict = []
-
-    for csv in csv_list:
-        input_file = csv
-        file = txt2list.txt2list(input_file)
-        lists = file.convert("\t")
-        rows = lists.shape[0]
-        for i in range(rows):
-            record = lists[i]
-            kws = re.split(r'[|]', record[2])[:-1]
-            for kw in kws:
-                if kw not in userdict:
-                    userdict.append(kw)
-
-    for word in userdict:
-        if len(word) > 0:
-            if not pynlpir.nlpir.AddUserWord(c_char_p(str(word).encode('utf-8'))):
-                print('AddUserWord failed!')
-                exit(-111)
-            else:
-                fdict.write(str(word) + '\n')
-
-    fdict.close()
-    print("finished in {:.2f} sec.".format(time.time() - start), flush=True)
-
-
-def writeTriple(bh, py, ss, source, foutput):
+def write_triple(bh, py, ss, source, foutput):
+    # use classical stop words list instead
+    # removeSpeech = [
+    #     'particle',
+    #     'punctuation mark',
+    #     'conjunction',
+    #     'preposition',
+    #     'adverb',
+    #     'noun of locality',
+    #     'pronoun',
+    #     'modal particle',
+    #     'onomatopoeia',
+    #     'string',
+    #     'suffix',
+    #     'interjection',
+    #     'numeral',
+    #     'prefix',
+    #     'classifier',
+    #     'status word'
+    # ]
     removeSpeech = [
-        'particle',
         'punctuation mark',
-        'conjunction',
-        'preposition',
-        'adverb',
-        'noun of locality',
-        'pronoun',
-        'modal particle',
-        'onomatopoeia',
-        'string',
-        'suffix',
-        'interjection',
-        'numeral',
-        'prefix',
-        'classifier',
-        'status word'
     ]
+    stopWords = np.load('ChineseStopWords.npy')
+    stopWordsList = stopWords.tolist()
+
     for wordPair in ss:
         word = wordPair[0]
         speech = wordPair[1]
         if word == ' ':
             continue
         elif speech is None:
-            print("{} is not recognized by NLPIR".format(wordPair[0]))
+            print("{} is not recognized by NLPIR".format(word))
+            log_file.write(word + '\n')
         elif speech in removeSpeech:
+            continue
+        elif word in stopWordsList:
             continue
         else:
             foutput.write('{},{},{},{},{}\n'.format(bh, py, source, speech, word))
 
 
 def txt2triple():
-    # for IS journal
-    csv_list = glob.glob("../data/csv/IS*.csv")
+    csv_list = glob.glob("../data/csv/{}*.csv".format(FIELD))
     length = len(csv_list)
 
     if length == 0:
@@ -116,7 +91,7 @@ def txt2triple():
 
     for count in range(length):
         input_file = csv_list[count]
-        file_name = re.search('csv(.+?)-13-17.csv', input_file).group(1)[1:]
+        file_name = re.search('{}(.+?)-13-17.csv'.format(FIELD), input_file).group(1)[1:]
 
         start = time.time()
         print("Generating {} triple ... ".format(file_name), flush=True)
@@ -127,7 +102,8 @@ def txt2triple():
 
         # with sampling, 360 records
         # optional operation
-        if count > length:
+        if count < length:
+            print(count)
             sampling_data = []
             sampling_labels = np.arange(2013, 2018)
             for i in range(rows):
@@ -138,7 +114,8 @@ def txt2triple():
             sampling_input = np.array(sampling_data)
             sampling_index = 0
             label_index = 1
-            if count == length - 1:
+            # conditional，中国图书馆学报不需要分层抽样
+            if count == 17:
                 sampling_type = 'ro'
             else:
                 sampling_type = 'rs'
@@ -153,9 +130,10 @@ def txt2triple():
             for j in range(len(sampling_labels)):
                 result = sampling_output[j]
                 py = sampling_labels[j]
-                # print("Length of {} sampled records are {}".format(py, len(result)))
-                output_file = open("../data/triple/{}-{}.txt".format(file_name, str(py)), 'w+', encoding='utf-8')
+
+                output_file = open("../data/triple/{}-{}-{}.txt".format(FIELD, file_name, str(py)), 'w+', encoding='utf-8')
                 output_file.write('bh,py,src,speech,word\n')
+
                 for bh in result:
                     record = records[bh]
                     TIss = pynlpir.segment(record[0])
@@ -165,16 +143,16 @@ def txt2triple():
                     KWs = pynlpir.segment(record[2])
                     AB = re.split(r'[<正>]', record[3])[-1]
                     ABss = pynlpir.segment(AB)
-                    writeTriple(bh, py, TIss, 4, output_file)
-                    writeTriple(bh, py, KWs, 2, output_file)
-                    writeTriple(bh, py, ABss, 1, output_file)
+                    write_triple(bh, py, TIss, 4, output_file)
+                    write_triple(bh, py, KWs, 2, output_file)
+                    write_triple(bh, py, ABss, 1, output_file)
                 output_file.close()
 
             print("finished in {:.2f} sec.".format(time.time() - start), flush=True)
 
         # without sampling, full records
-        elif count < length:
-            output_file = open("../data/triple/Full/{}.txt".format(file_name), 'w+', encoding='utf-8')
+        elif count > length:
+            output_file = open("../data/triple/Full/{}-{}.txt".format(FIELD, file_name), 'w+', encoding='utf-8')
             output_file.write('bh,py,src,speech,word' + '\n')
 
             for i in range(rows):
@@ -186,9 +164,9 @@ def txt2triple():
                 KWs = pynlpir.segment(record[2])
                 AB = re.split(r'[<正>]', record[3])[-1]
                 ABss = pynlpir.segment(AB)
-                writeTriple(bh, py, TIss, 4, output_file)
-                writeTriple(bh, py, KWs, 2, output_file)
-                writeTriple(bh, py, ABss, 1, output_file)
+                write_triple(bh, py, TIss, 4, output_file)
+                write_triple(bh, py, KWs, 2, output_file)
+                write_triple(bh, py, ABss, 1, output_file)
 
             output_file.close()
             print("finished in {:.2f} sec.".format(time.time() - start), flush=True)
@@ -197,10 +175,14 @@ def txt2triple():
 
 
 if __name__ == '__main__':
+    # FIELD = ['IS','CS','PHY']
+    FIELD = 'CS'
     # xml2txt()
     pynlpir.open()
     # AddUserWord 加入用户词典的词不可分割
     pynlpir.nlpir.AddUserWord(c_char_p('云计算'.encode('utf-8')))
     pynlpir.nlpir.AddUserWord(c_char_p('微博'.encode('utf-8')))
+    log_file = open('../log/{}-Triple-log.txt'.format(FIELD), 'a+', encoding='utf-8')
     txt2triple()
     pynlpir.close()
+    log_file.close()
