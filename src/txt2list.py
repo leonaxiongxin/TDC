@@ -1,6 +1,6 @@
 """
-  xml2triple.py
-  convert xml to csv
+  txt2list.py
+  convert text file to python list
 """
 
 import numpy as np

@@ -28,9 +28,9 @@ def group_by_journal_line():
     @description: compare average tdc between journals
     @return:  1 line
     """
-    bottom = 0.86
-    upper = 0.98
-    step = 0.02
+    bottom = 0.94
+    upper = 0.99
+    step = 0.01
     x = np.load('../data/journals_{}_zh.npy'.format(FIELD))
     tdc = np.load("../log/{}-tdc-by-journal.npy".format(FIELD))
     plt.figure(figsize=(16, 4))
@@ -95,8 +95,10 @@ def group_by_journal_hist():
     @description: box plot for each journal
     @return: 1 box plot
     """
-    upper = 6
+    upper = 4
     bottom = -2
+    x_step = 1
+    y_step = 0.2
     intervals = np.arange(bottom, upper + 1, 1)
     journals = np.load('../data/journals_{}_zh.npy'.format(FIELD))
     journals_tdc_path = get_journals()
@@ -124,11 +126,11 @@ def group_by_journal_hist():
         plt.xlabel("TDC value")
         plt.ylabel("Frequency %")
         # 设置坐标轴范围
-        plt.xlim((bottom - 2, upper - 1))
+        plt.xlim((bottom, upper - x_step))
         plt.ylim((0, 1))
         # 设置坐标轴刻度
-        x_ticks = np.arange(bottom - 2, upper - 1)
-        y_ticks = np.arange(0, 1, 0.2)
+        x_ticks = np.arange(bottom, upper - x_step)
+        y_ticks = np.arange(0, 1, y_step)
         plt.xticks(x_ticks)
         plt.yticks(y_ticks)
         plt.tight_layout()
@@ -140,15 +142,15 @@ def group_by_py_line():
     @description: compare tdc between publication years for each journal
     @return: multiple subplots
     """
-    bottom = 0.93
+    bottom = 0.96
     upper = 1.00
-    step = 0.02
+    step = 0.01
     journals = np.load('../data/journals_{}_zh.npy'.format(FIELD))
     tdc = np.load("../log/{}-tdc-by-py.npy".format(FIELD))
     pys = np.arange(2013., 2018.)
     size = len(journals)
 
-    plt.figure(figsize=(12, 5))
+    plt.figure(figsize=(14, 5))
 
     for i in range(size):
         start = i * 5
@@ -212,9 +214,9 @@ def group_by_field_line():
     @return:  1 line
     """
     plt.figure(figsize=(16, 4))
-    bottom = 0.86
-    upper = 0.98
-    step = 0.02
+    bottom = 0.94
+    upper = 0.99
+    step = 0.01
     fields = ['IS', 'PHY', 'CS']
     for field in fields:
         x = np.load('../data/journals_{}_zh.npy'.format(field))
@@ -233,12 +235,12 @@ def group_by_field_line():
 
 if __name__ == '__main__':
     # 设置字体为黑体，解决中文乱码问题
-    plt.rcParams['font.sans-serif']=['SimHei']
+    plt.rcParams['font.sans-serif'] = ['SimHei']
     # 解决坐标轴负号'-'显示为方块的问题
     plt.rcParams['axes.unicode_minus'] = False
 
     # FIELD = ['IS','CS','PHY']
-    FIELD = 'PHY'
+    FIELD = 'IS'
 
     # get_journals_zh()
     # group_by_journal_line()

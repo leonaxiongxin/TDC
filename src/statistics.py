@@ -2,7 +2,6 @@ import numpy as np
 import re
 from scipy import stats
 import math
-import glob
 
 
 class StatisticalAnalyze:
@@ -64,7 +63,7 @@ def statistics(tdc_journals_list):
     length = len(tdc_journals_list)
 
     log_file = open('../analysis/{}-TDC-Descriptive.txt'.format(FIELD), 'a+', encoding='utf-8')
-    log_file.write('期刊\t计数\t均值\t极小值\t极大值\t标准差\t偏度\t峰度\t95%置信区间下限\t95%置信区间上限\t正值个数\t正值百分比\n')
+    log_file.write('期刊\t计数\t均值\t极小值\t极大值\t标准差\t正值个数\t正值百分比\t偏度\t峰度\t95%置信区间下限\t95%置信区间上限\n')
 
     for i in range(length):
         if i < length:
@@ -86,8 +85,8 @@ def statistics(tdc_journals_list):
             upper = ci['upper']
             positive_count, positive_percent = sa.frequency_count()
 
-            log_file.write('{}\t{}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\t{}\t{:.4f}\n'.format(
-                file_name, nobs, mean, minimum, maximum, std, skewness, kurt, bottom, upper, positive_count, positive_percent)
+            log_file.write('{}\t{}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\t{}\t{:.4f}\t{:.7f}\t{:.7f}\t{:.7f}\t{:.7f}\n'.format(
+                file_name, nobs, mean, minimum, maximum, std, positive_count, positive_percent, skewness, kurt, bottom, upper)
             )
         else:
             pass
@@ -121,8 +120,9 @@ def gradient():
 
 
 if __name__ == '__main__':
-    for FIELD in ['PHY']:
-        # tdc_journals_path = get_journals_path()
+    FIELDS = ['IS', 'CS', 'PHY']
+    # FIELDS = ['IS']
+    for FIELD in FIELDS:
+        tdc_journals_path = get_journals_path()
         # statistics(tdc_journals_path)
-
         gradient()
